@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sidra Zaidi | AI Engineer</title>
+<link rel="icon" href="data:,">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:radial-gradient(circle at top,#0f172a,#0b0f14 60%);
+color:#e6edf3;
+overflow-x:hidden;
+}
+
+/* LOADER */
+#loader{
+position:fixed;inset:0;
+display:flex;align-items:center;justify-content:center;
+background:#0b0f14;
+z-index:9999;
+flex-direction:column;
+}
+.spinner{
+width:40px;height:40px;
+border:3px solid rgba(255,255,255,0.1);
+border-top:3px solid #7aa2f7;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* glow */
+body::before,body::after{
+content:"";
+position:fixed;
+width:600px;height:600px;
+background:radial-gradient(circle,rgba(59,130,246,0.25),transparent 60%);
+filter:blur(80px);
+z-index:-1;
+}
+body::before{top:-200px;left:-200px;animation:float 10s infinite}
+body::after{
+bottom:-200px;right:-200px;
+background:radial-gradient(circle,rgba(139,92,246,0.18),transparent 60%);
+animation:float2 12s infinite;
+}
+@keyframes float{50%{transform:translateY(40px)}}
+@keyframes float2{50%{transform:translateY(-40px)}}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;
+backdrop-filter:blur(12px);
+background:rgba(10,15,20,0.6);
+border-bottom:1px solid rgba(255,255,255,0.06);
+display:flex;justify-content:center;
+z-index:100;
+}
+nav a{
+padding:14px 18px;
+color:#9aa4b2;
+text-decoration:none;
+font-size:13px;
+}
+nav a.active{color:#fff}
+
+/* layout */
+.container{max-width:1000px;margin:auto;padding:100px 20px}
+
+/* HERO */
+.hero{padding:90px 0}
+.name{font-size:52px;font-weight:700}
+.role{color:#aab4c0;margin-top:8px}
+.typing{
+margin-top:18px;
+font-size:18px;
+color:#cbd5e1;
+border-right:2px solid #7aa2f7;
+white-space:nowrap;
+overflow:hidden;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+border-radius:14px;
+padding:22px;
+margin-top:18px;
+transition:0.3s;
+}
+.card:hover{transform:translateY(-4px)}
+
+/* buttons */
+.btn{
+display:inline-block;
+padding:10px 14px;
+border-radius:10px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.1);
+color:#e6edf3;
+margin-right:10px;
+}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:0.7s}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* CMD PALETTE */
+#cmdk{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9998;
+}
+.cmd-box{
+width:500px;
+background:#0f172a;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:12px;
+padding:10px;
+}
+.cmd-box input{
+width:100%;
+padding:12px;
+background:transparent;
+border:none;
+color:white;
+outline:none;
+}
+
+/* footer */
+footer{text-align:center;color:#6b7280;margin-top:80px;font-size:13px}
+
+/* Social Buttons */
+.social-btn {
+	background: linear-gradient(90deg, #1e293b 60%, #334155 100%);
+	border: 1px solid #334155;
+	color: #e6edf3;
+	font-weight: 500;
+	box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+	transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.social-btn:hover {
+	background: linear-gradient(90deg, #2563eb 60%, #7c3aed 100%);
+	color: #fff;
+	transform: translateY(-2px) scale(1.04);
+	box-shadow: 0 4px 16px 0 rgba(124,58,237,0.12);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+<div class="spinner"></div>
+<p style="margin-top:10px;color:#9aa4b2">Loading Portfolio...</p>
+</div>
+
+<!-- CMD K -->
+<div id="cmdk">
+<div class="cmd-box">
+<input placeholder="Type: projects / contact / github / resume" />
+</div>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+<section id="home" class="hero reveal">
+<div class="name">Sidra Zaidi</div>
+<div class="role">AI Engineer • Full Stack Developer</div>
+<div id="typing" class="typing"></div>
+
+<div style="margin-top:25px">
+	<a class="btn social-btn" href="https://github.com/zaidi101" target="_blank" rel="noopener" title="GitHub">
+		<svg height="18" width="18" style="vertical-align:middle;margin-right:6px" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+		GitHub
+	</a>
+	<a class="btn social-btn" href="https://www.linkedin.com/in/sidra-zaidi-1b6464319" target="_blank" rel="noopener" title="LinkedIn">
+		<svg height="18" width="18" style="vertical-align:middle;margin-right:6px" viewBox="0 0 16 16" fill="currentColor"><path d="M1.146 1.146C.417 1.875.417 3.125 1.146 3.854c.729.729 1.979.729 2.708 0 .729-.729.729-1.979 0-2.708-.729-.729-1.979-.729-2.708 0zM.5 5.5h3V16h-3V5.5zm7.5 0h2.5v1.563h.036c.348-.659 1.197-1.354 2.464-1.354C15.5 5.709 16 7.09 16 9.084V16h-3v-6.084c0-1.453-.026-3.322-2.021-3.322-2.021 0-2.329 1.579-2.329 3.211V16h-3V5.5z"></path></svg>
+		LinkedIn
+	</a>
+	<a class="btn social-btn" href="Sidra_Zaidi_Resume.pdf" target="_blank" rel="noopener" title="Resume" download>
+		<svg height="18" width="18" style="vertical-align:middle;margin-right:6px" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 14.5v-1h15v1a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1zm7-13a.5.5 0 0 1 .5.5v8.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V1.5a.5.5 0 0 1 .5-.5z"></path></svg>
+		Resume
+	</a>
+</div>
+</section>
+
+<h2 class="reveal">Engineering Overview</h2>
+<div class="card reveal">
+AI + Full Stack systems with ML pipelines, backend architecture, and scalable deployments.
+</div>
+
+<section id="projects">
+<h2 class="reveal">Projects</h2>
+
+<div class="card reveal">
+<b>VitaNovaAI</b>
+<p style="color:#aab4c0;margin-top:10px">
+ECG AI + SHAP explainability + full-stack pipeline.
+</p>
+</div>
+
+<div class="card reveal">
+<b>MERN E-Commerce</b>
+</div>
+
+<div class="card reveal">
+<b>Real-Time Chat App</b>
+</div>
+</section>
+
+<section id="experience">
+<h2 class="reveal">Experience</h2>
+<div class="card reveal">
+Fambzzhh — Full Stack Developer Intern
+</div>
+</section>
+
+<section id="contact">
+<h2 class="reveal">Contact</h2>
+<div class="card reveal">
+sidrazaidi922@gmail.com
+</div>
+</section>
+
+<footer class="reveal">
+Built for AI Engineering • Portfolio v2
+</footer>
+
+</div>
+
+<script>
+
+/* loader */
+window.addEventListener("load",()=>{
+setTimeout(()=>document.getElementById("loader").style.display="none",800);
+});
+
+/* typing */
+const text="Building intelligent AI systems with real-world impact.";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text[i++];
+setTimeout(type,30);
+}
+}
+type();
+
+/* reveal */
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting)x.target.classList.add("active");
+});
+},{threshold:0.1});
+
+document.querySelectorAll(".reveal").forEach(e=>obs.observe(e));
+
+/* nav active */
+
+const sec = document.querySelectorAll("section");
+const links = document.querySelectorAll("nav a");
+
+function setActiveLink() {
+	let cur = "";
+	sec.forEach(s => {
+		const rect = s.getBoundingClientRect();
+		if (rect.top <= 120 && rect.bottom > 120) {
+			cur = s.id;
+		}
+	});
+	links.forEach(l => {
+		l.classList.remove("active");
+		if (l.getAttribute("href") === `#${cur}`) l.classList.add("active");
+	});
+}
+
+window.addEventListener("scroll", setActiveLink);
+setActiveLink();
+
+// Smooth scroll and highlight on click
+links.forEach(link => {
+	link.addEventListener("click", function(e) {
+		const targetId = this.getAttribute("href").replace('#', '');
+		const targetSection = document.getElementById(targetId);
+		if (targetSection) {
+			e.preventDefault();
+			window.scrollTo({
+				top: targetSection.offsetTop - 70,
+				behavior: "smooth"
+			});
+			// Highlight immediately
+			links.forEach(l => l.classList.remove("active"));
+			this.classList.add("active");
+		}
+	});
+});
+
+/* CMD K */
+const cmd=document.getElementById("cmdk");
+document.addEventListener("keydown",(e)=>{
+if(e.key==="k" && e.ctrlKey){
+cmd.style.display="flex";
+}
+if(e.key==="Escape"){
+cmd.style.display="none";
+}
+});
+cmd.addEventListener("click",(e)=>{
+if(e.target===cmd)cmd.style.display="none";
+});
+
+</script>
+
+</body>
+</html>
